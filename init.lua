@@ -604,6 +604,22 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
+        --
+        texlab = {},
+        lua_ls = {
+          -- cmd = { ... },
+          -- filetypes = { ... },
+          -- capabilities = {},
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -908,6 +924,13 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'tex',
+  callback = function()
+    vim.keymap.set('n', '<leader>rl', require('custom.functions.latex').compile_latex, { buffer = true, desc = '[R]ender [L]atex (no display)' })
+  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
