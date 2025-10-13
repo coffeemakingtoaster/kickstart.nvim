@@ -813,8 +813,8 @@ require('lazy').setup({
     'Yazeed1s/minimal.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      --vim.cmd.colorscheme 'minimal'
-      vim.cmd.colorscheme 'pablo'
+      vim.cmd.colorscheme 'minimal'
+      -- vim.cmd.colorscheme 'pablo'
     end,
   },
 
